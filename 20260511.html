@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOPE Instrument Academic Presentation - 完整校對版</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a365d; --accent: #c2410c; --bg-slide: #ffffff;
+            --bg-body: #94a3b8; --bg-accent: #eff6ff; --bg-point: #fff9db;
+            --text-main: #1e293b; --text-muted: #64748b;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: var(--bg-body); font-family: 'Inter', 'Noto Sans TC', sans-serif; display: flex; flex-direction: column; align-items: center; gap: 40px; padding: 40px 0; }
+        .slide { width: 1280px; height: 720px; background-color: var(--bg-slide); box-shadow: 0 20px 50px rgba(0,0,0,0.3); padding: 50px 70px; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+        .slide-title { font-family: 'Poppins', sans-serif; font-size: 32px; color: var(--primary); border-left: 10px solid var(--primary); padding-left: 20px; margin-bottom: 25px; font-weight: 700; }
+        .summary-box { background-color: var(--bg-accent); padding: 22px; border-radius: 12px; font-size: 18px; line-height: 1.6; color: var(--primary); margin-bottom: 30px; }
+        .pillar-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 30px; }
+        .pillar-card { background: white; border: 1px solid #e2e8f0; border-radius: 15px; padding: 25px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .pillar-card i { font-size: 34px; color: #b45309; margin-bottom: 15px; }
+        .pillar-card h4 { font-size: 20px; color: var(--primary); margin-bottom: 12px; }
+        .pillar-card p { font-size: 14.5px; color: #475569; text-align: left; line-height: 1.5; }
+        .tag-row { display: flex; justify-content: center; gap: 15px; margin-top: 10px; }
+        .tag { background: #1e293b; color: white; padding: 8px 18px; border-radius: 50px; font-size: 13px; font-weight: 600; }
+        .original-text { background-color: var(--bg-accent); border-left: 8px solid var(--primary); padding: 15px 25px; font-size: 19px; font-weight: 600; color: var(--primary); margin-bottom: 8px; }
+        .translation-text { font-size: 17px; color: #475569; font-style: italic; padding-left: 20px; margin-bottom: 15px; }
+        .guided-box { background-color: var(--bg-point); border-left: 6px solid #fab005; padding: 12px 20px; font-size: 16px; font-weight: 700; color: #856404; margin-bottom: 20px; border-radius: 4px; }
+        .analysis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .item-box { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; }
+        .item-box h3 { font-size: 18px; color: var(--primary); margin-bottom: 12px; border-bottom: 2px solid #f1f5f9; padding-bottom: 5px; }
+        .vocab-entry { margin-bottom: 10px; }
+        .vocab-word { font-weight: 700; color: var(--accent); font-size: 15px; display: block; margin-bottom: 2px; }
+        .vocab-def { font-size: 13.5px; color: var(--text-main); line-height: 1.4; padding-left: 10px; border-left: 2px solid #e2e8f0; }
+    </style>
+</head>
+<body>
+
+<div class="slide" style="justify-content: center;">
+    <h1 style="font-family: 'Poppins'; font-size: 44px; color: var(--primary); text-align: center;">Development and Validation of the HOPE<br>(Helping Online Parents with Engagement) Instrument</h1>
+    <div style="text-align: center; color: var(--accent); font-size: 26px; font-weight: 700; margin-top: 25px;">HOPE 量表的開發與驗證：衡量家長支持線上學習之能力</div>
+    <p style="text-align: center; color: var(--text-muted); font-size: 18px; margin-top: 15px;">深度學術解析與研究核心診斷工具整理</p>
+</div>
+
+<div class="slide">
+    <h2 class="slide-title">快速閱讀：研究全貌與 HOPE 三大支柱</h2>
+    <div class="summary-box">本研究旨在開發並驗證一個科學工具(HOPE)，用於識別家長對於「支持學生在數位環境中投入學習」的感知能力。這不僅是量表，更是一個能幫助學校診斷家長具體需求、進而改善線上教育成效的指南。</div>
+    <div class="pillar-row">
+        <div class="pillar-card"><i class="fa-solid fa-user-graduate"></i><h4>學習者獨立性認知</h4><p>測量家長如何觀察孩子的「自主學習」能力。例如：孩子是否能自動坐到電腦前、是否能獨立完成線上任務而不需要家長時刻盯促。</p></div>
+        <div class="pillar-card"><i class="fa-solid fa-heart-pulse"></i><h4>家長支持信心</h4><p>家長對「自己能否幫上忙」的主觀自信。包含：我是否有能力協助孩子解決線上平台的技術問題？當孩子卡關時，我是否知道如何引導？</p></div>
+        <div class="pillar-card"><i class="fa-solid fa-school"></i><h4>學校資源支援度</h4><p>外部支援的感知。學校是否有提供足夠的導覽影片？當家長遇到困難時，校方是否能即時提供諮詢與教材？這是評估「校家合作」的關鍵指標。</p></div>
+    </div>
+    <div style="text-align: center; font-style: italic; color: var(--text-muted); font-size: 15px; margin-bottom: 20px;">"HOPE 量表的價值在於：當家長信心不足時，學校給予心理培訓；當學生獨立性不足時，學校教導家長管理技巧。"</div>
+    <div class="tag-row">
+        <span class="tag">660位參與家長</span><span class="tag">EFA 結構探索</span><span class="tag">CFA 穩定驗證</span><span class="tag">K-12 線上學校背景</span>
+    </div>
+</div>
+
+<div class="slide">
+    <h2 class="slide-title">逐句解析 (01)</h2>
+    <div class="original-text">"In this study, we developed and collect initial evidence of the validity of scores from an instrument to identify parents' perceptions of their ability to support students' engagement in online learning."</div>
+    <div class="translation-text">在本研究中，我們開發並收集了一個工具得分效度的初步證據，用以識別家長對自身支持學生參與線上學習能力的認知。</div>
+    <div class="guided-box">導讀重點：點出研究核心產出：一個具備科學實證、能衡量家長主觀看法的量表。</div>
+    <div class="analysis-grid">
+        <div class="item-box">
+            <h3>專有名詞解析</h3>
+            <div class="vocab-entry"><span class="vocab-word">● Validity of Scores (得分效度)</span><span class="vocab-def">指測量結果能反映「預期構念」的準確程度。研究強調不只是開發量表，更要證明分數具有科學意義。</span></div>
+            <div class="vocab-entry"><span class="vocab-word">● Instrument (量表/工具)</span><span class="vocab-def">不僅是問卷，更指一套有系統的測量機制，包含計分與解讀標準。</span></div>
+        </div>
+        <div class="item-box">
+            <h3>單字與文法</h3>
+            <div class="vocab-entry"><span class="vocab-word">● Perceptions (n.): 認知/觀感</span><span class="vocab-def">學術關鍵詞。強調家長「主觀上」覺得自己行不行，這會直接影響他們的行為。</span></div>
+            <div class="vocab-entry"><span class="vocab-word">● Engagement (n.): 投入度</span><span class="vocab-def">指學生在行為、情感與認知三方面的參與，而不僅僅是人在電腦前。</span></div>
+            <div class="vocab-entry"><span class="vocab-word">● To identify... (不定詞作為目的狀語)</span><span class="vocab-def">在此句中用來解釋開發量表的核心目標與科學意圖。</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="slide">
+    <h2 class="slide-title">逐句解析 (02)</h2>
+    <div class="original-text">"The instrument can also diagnose what level and type of help they need. This study randomly split 660 participating parents from an established K–12 online school into two subgroups."</div>
+    <div class="translation-text">該工具還可以診斷他們需要何種程度與類型的幫助。本研究將 660 位來自一所成熟 K-12 線上學校的參與家長隨機分為兩個子組。</div>
+    <div class="guided-box">導讀重點：說明 HOPE 的實用價值（診斷）以及研究在統計抽樣上的嚴謹性（隨機分組）。</div>
+    <div class="analysis-grid">
+        <div class="item-box">
+            <h3>專有名詞解析</h3>
+            <div class="vocab-entry"><span class="vocab-word">● Diagnose (診斷功能)</span><span class="vocab-def">指量表不僅提供總分，還具備「識別弱項」的功能，找出具體痛點。</span></div>
+            <div class="vocab-entry"><span class="vocab-word">● Randomly split (隨機分組)</span><span class="vocab-def">統計學高標準。將樣本隨機拆開，一部分用於探索結構，另一部分用於獨立驗證。</span></div>
+        </div>
+        <div class="item-box">
+            <h3>單字與文法</h3>
+            <div class="vocab-entry"><span class="vocab-word">● Established (adj.): 成熟的/已確立的</span><span class="vocab-def">指該校已有穩定體系，排除新創機構可能產出的異常數據。</span></div>
+            <div class="vocab-entry"><span class="vocab-word">● Participating (adj.): 參與的</span><span class="vocab-def">現在分詞修飾家長，描述這群受測者是主動參與研究的行為主體。</span></div>
+            <div class="vocab-entry"><span class="vocab-word">● Subgroups (n.): 子組</span><span class="vocab-def">統計學常用詞，用於描述從母群體中抽取的特定樣本集。</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="slide">
+    <h2 class="slide-title">逐句解析 (03)</h2>
+    <div class="original-text">"We conducted an exploratory factor analysis (EFA) for one group to investigate the constructs and their initial reliability. We then conducted a confirmatory factor analysis (CFA) for the second group."</div>
+    <div class="translation-text">我們對第一組進行了探索性因素分析(EFA)以探討潛在構面及其初步信度；隨後對第二組進行了驗證性因素分析(CFA)。</div>
+    <div class="guided-box">導讀重點：介紹量表驗證的黃金流程：先「探索」結構(EFA)，再「驗證」結構是否正確(CFA)。</div>
+    <div class="analysis-grid">
+        <div class="item-box">
+            <h3>專有名詞解析</h3>
+            <div class="vocab-entry"><span class="vocab-word">● EFA (探索性因素分析)</span><span class="vocab-def">在未知結構時，從海量題目中找出「隱藏的分類規律」，將相似題目彙整為因素。</span></div>
+            <div class="vocab-entry"><span class="vocab-word">● CFA (驗證性因素分析)</span><span class="vocab-def">更高階的驗證。用來測試「探索出的模型」是否真的符合另一組新數據。</span></div>
+            <div class="vocab-entry"><span class="vocab-word">● Reliability (信度)</span><span class="vocab-def">測量的穩定性。指若重複測量，是否能得到高度一致且可靠的結果。</span></div>
+        </div>
+        <div class="item-box">
+            <h3>單字與文法</h3>
+            <div class="vocab-entry"><span class="vocab-word">● Conducted (v.): 執行/施行</span><span class="vocab-def">論文寫作首選動詞。描述進行實驗、調查或統計時，展現研究的正式感。</span></div>
+            <div class="vocab-entry"><span class="vocab-word">● Constructs (n.): 構面/概念結構</span><span class="vocab-def">指抽象概念（如信心、自主）。這類概念無法直接看到，必須透過題目間接測量。</span></div>
+            <div class="vocab-entry"><span class="vocab-word">● Investigate (v.): 探討/研究</span><span class="vocab-def">表示有系統地探索特定科學現象，通常用於說明 EFA 的目的。</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="slide">
+    <h2 class="slide-title">逐句解析 (04)</h2>
+    <div class="original-text">"The results indicated good fit for a three-factor model representing three constructs: (a) independent engagement, (b) parents' confidence, (c) school support."</div>
+    <div class="translation-text">結果顯示三因素模型適配良好，其代表了三個構面：(a) 學習者的獨立投入、(b) 家長的信心、(c) 學校提供的支援。</div>
+    <div class="guided-box">導讀重點：公布最終答案：HOPE 量表被證實由「學生自主、家長信心、學校資源」這三方組成。</div>
+    <div class="analysis-grid">
+        <div class="item-box">
+            <h3>專有名詞解析</h3>
+            <div class="vocab-entry"><span class="vocab-word">● Good Fit (適配良好)</span><span class="vocab-def">統計學核心指標。代表研究者的「理論模型」與「實測數據」高度吻合，證明假設成立。</span></div>
+            <div class="vocab-entry"><span class="vocab-word">● Three-factor Model (三因素模型)</span><span class="vocab-def">確立了 HOPE 的科學架構，由三個最重要的心理構面支撐。</span></div>
+        </div>
+        <div class="item-box">
+            <h3>單字與文法</h3>
+            <div class="vocab-entry"><span class="vocab-word">● Indicated (v.): 指出/顯示</span><span class="vocab-def">論文中最穩健的動詞，用來呈現統計結果，避免過於主觀的表達。</span></div>
+            <div class="vocab-entry"><span class="vocab-word">● Representing (現在分詞)</span><span class="vocab-def">作為後置修飾語，解釋統計模型具體對應到的現實教育概念。</span></div>
+            <div class="vocab-entry"><span class="vocab-word">● Independent (adj.): 獨立的</span><span class="vocab-def">指孩子不需要督促就能學習的能力，是線上學習成功的關鍵指標。</span></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
