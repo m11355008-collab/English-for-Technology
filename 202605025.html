@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Use & Note-Taking Academic Presentation (Master Edition)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans TC', 'sans-serif'],
+                        display: ['Poppins', 'Noto Sans TC', 'sans-serif'],
+                    },
+                    colors: {
+                        academic: {
+                            deep: '#1a365d',
+                            accent: '#c2410c',
+                            lightBg: '#eff6ff',
+                            pointBg: '#fff9db',
+                            pointBorder: '#fab005',
+                            pointText: '#856404',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .slide {
+            display: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .slide.active {
+            display: flex;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen flex flex-col justify-between overflow-hidden select-none">
+
+    <!-- Top Header Bar -->
+    <header class="bg-white border-b border-slate-200 px-6 py-3 flex justify-between items-center z-10 shadow-sm">
+        <div class="flex items-center gap-3">
+            <span class="bg-amber-600 text-white text-xs font-bold px-2.5 py-1 rounded">MASTER EDITION</span>
+            <h1 class="text-slate-700 font-medium text-sm md:text-base truncate max-w-lg">LLM Use and Note-Taking: Randomised Controlled Experiment</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <button onclick="toggleFullScreen()" class="text-slate-500 hover:text-slate-800 transition p-2 rounded-lg hover:bg-slate-50" title="全螢幕模式">
+                <i class="fa-solid fa-expand text-lg" id="fs-icon"></i>
+            </button>
+            <div class="text-slate-400 text-xs hidden md:block">鍵盤控制： ← 與 →</div>
+        </div>
+    </header>
+
+    <!-- Main Slide Viewer -->
+    <main class="flex-grow flex items-center justify-center p-4">
+        <div class="w-full max-w-6xl aspect-[16/9] bg-white rounded-2xl shadow-2xl relative flex flex-col justify-between p-8 md:p-10 border border-slate-200" id="slide-deck">
+            
+            <!-- Slide 1: Title Slide -->
+            <div class="slide active flex-col justify-center items-center text-center h-full gap-6">
+                <h2 class="text-3xl md:text-5xl font-bold text-academic-deep leading-tight font-display max-w-4xl">
+                    Effects of LLM Use and Note-Taking on Reading Comprehension and Memory
+                </h2>
+                <div class="h-1 w-24 bg-amber-600 my-2"></div>
+                <h3 class="text-xl md:text-2xl font-bold text-amber-700 font-display">
+                    大型語言模型使用與傳統筆記對閱讀理解與記憶的影響
+                </h3>
+                <p class="text-slate-500 text-base md:text-lg max-w-2xl font-medium">
+                    中學隨機對照實驗與多維度高階語意文法極致解析
+                </p>
+            </div>
+
+            <!-- Slide 2: Key Insights -->
+            <div class="slide flex-col justify-between h-full">
+                <div>
+                    <h2 class="slide-title text-2xl md:text-3xl font-bold text-academic-deep border-l-[8px] border-academic-deep pl-4 mb-3">
+                        核心研究洞察：AI 時代的學習悖論
+                    </h2>
+                    <p class="text-slate-600 text-sm md:text-base mb-3 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200">
+                        本隨機對照實驗探討了數位學習時代中，AI 工具與傳統學習法的拉鋸，揭示了績效與偏好之間的矛盾：
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-5 my-auto">
+                    <!-- Card AI -->
+                    <div class="border-t-[5px] border-sky-500 bg-sky-50/50 rounded-xl p-4 shadow-sm">
+                        <h3 class="text-base md:text-lg font-bold text-sky-800 flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-robot"></i> LLM 使用 (生成式 AI)
+                        </h3>
+                        <ul class="text-xs md:text-sm text-slate-700 space-y-1 list-disc pl-5">
+                            <li><b>優勢：</b>簡化複雜內容、顯著降低大腦工作記憶的認知負荷。</li>
+                            <li><b>角色：</b>極佳的「初步理解」起步工具，能大幅激發學生興趣。</li>
+                            <li><b>偏好：</b>高達多數學生主觀上最喜歡，並認為對自己最有幫助。</li>
+                        </ul>
+                    </div>
+
+                    <!-- Card Notes -->
+                    <div class="border-t-[5px] border-amber-600 bg-amber-50/30 rounded-xl p-4 shadow-sm">
+                        <h3 class="text-base md:text-lg font-bold text-amber-800 flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-pen-fancy"></i> 傳統筆記 (Note-taking)
+                        </h3>
+                        <ul class="text-xs md:text-sm text-slate-700 space-y-1 list-disc pl-5">
+                            <li><b>優勢：</b>強迫深層認知與大腦編碼參與，積極輔助長期記憶。</li>
+                            <li><b>角色：</b>「長期留存（Retention）」與學術概念鞏固的終點線關鍵。</li>
+                            <li><b>成效：</b>客觀測驗數據證明，成績顯著高於單獨使用 AI 組。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Verdict Box -->
+                <div class="bg-emerald-50 border-2 border-dashed border-emerald-400 rounded-xl p-3 text-center mt-3">
+                    <div class="text-emerald-800 font-bold text-sm md:text-base flex items-center justify-center gap-2 mb-0.5">
+                        <i class="fa-solid fa-circle-check"></i> 最終研究建議：Hybrid Strategy (混合策略)
+                    </div>
+                    <p class="text-slate-700 text-xs md:text-sm">
+                        不應因噎廢食排除 AI。最佳效果來自 <b>「AI 輔助初步理解 + 傳統筆記進行知識固化」</b>，並需搭配 <b>Competency Training (素養培訓)</b>。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 3: Sentence 1 -->
+            <div class="slide flex-col justify-between h-full">
+                <h2 class="slide-title text-2xl md:text-3xl font-bold text-academic-deep border-l-[8px] border-academic-deep pl-4 mb-2">逐句解析 (01)</h2>
+                
+                <div class="original-text bg-blue-50 border-l-8 border-academic-deep p-2.5 text-sm md:text-base font-semibold text-academic-deep mb-2 rounded-r-lg">
+                    "Students' rapid uptake of Generative Artificial Intelligence tools, particularly large language models (LLMs), raises urgent questions about their effects on learning."
+                </div>
+                <div class="translation-text text-slate-600 italic pl-5 text-xs md:text-sm border-b border-dashed border-slate-200 pb-2 mb-2">
+                    學生對生成式人工智慧工具（特別是大型語言模型，LLMs）的迅速採用，引發了關於它們對學習影響的迫切問題。
+                </div>
+
+                <div class="guided-box bg-amber-50 border-l-4 border-amber-400 text-amber-900 p-2 rounded text-xs md:text-sm font-semibold mb-2">
+                    💡 導讀重點：背景闡述。開篇即點出生成式 AI 技術爆發式的社會採用，與教育界認知評估研究匱乏之間的矛盾。
+                </div>
+
+                <div class="grid grid-cols-12 gap-4 flex-grow overflow-y-auto">
+                    <!-- Text Analytics (7/12) -->
+                    <div class="col-span-12 bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col gap-3">
+                        <div>
+                            <span class="font-bold text-indigo-950 text-xs flex items-center gap-1.5"><i class="fa-solid fa-book-atlas"></i> 學術單字 (Academic Vocabulary)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-indigo-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-indigo-900">1. Generative Artificial Intelligence:</span> 生成式人工智慧。專指能藉由深度神經網絡學習海量語料，進而主動創造原創文本、代碼或影音內容之高階技術。</div>
+                                <div><span class="font-semibold text-indigo-900">2. Large Language Models (LLMs):</span> 大型語言模型。基於 Transformer 架構、專為自然語言理解與複雜對話生成設計的預訓練模型。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-emerald-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-feather-pointed"></i> 生僻一般單字 (Uncommon Words)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-emerald-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-emerald-800">1. Uptake (n.):</span> 採用、吸收率。在學術研究中多用於指代新觀點、政策或科技被特定群體快速接納並融入日常的比率，比一般 adoption 更具定量意味。</div>
+                                <div><span class="font-semibold text-emerald-800">2. Urgent (adj.):</span> 刻不容緩的。學術呼籲中的高頻修飾詞，用於強調研究因應現實變革的急迫性。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-amber-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-code"></i> 生僻文法 (Uncommon Grammar)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-amber-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-amber-800">1. 遠距離主謂一致 (Subject-Verb Agreement):</span> 句中的主詞為單數名詞 <span class="italic">"uptake"</span>，動詞為 <span class="italic">"raises"</span>。中間隔著長達九個單字的修飾成分，且包含複數名詞 "tools" 與 "models(LLMs)"，此為考題中極易混淆的干擾點。</div>
+                                <div><span class="font-semibold text-amber-800">2. 同位語與插入說明 (Parenthetical Appositive):</span> <span class="italic">"particularly large language models (LLMs)"</span> 作為 Generative AI tools 的同位語，採用雙逗號形式插入主句中以限定討論範疇。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Sentence 2 -->
+            <div class="slide flex-col justify-between h-full">
+                <h2 class="slide-title text-2xl md:text-3xl font-bold text-academic-deep border-l-[8px] border-academic-deep pl-4 mb-2">逐句解析 (02)</h2>
+                
+                <div class="original-text bg-blue-50 border-l-8 border-academic-deep p-2.5 text-sm md:text-base font-semibold text-academic-deep mb-2 rounded-r-lg">
+                    "We compared the impact of LLM use to that of traditional note-taking, or a combination of both, on secondary school students' reading comprehension and retention."
+                </div>
+                <div class="translation-text text-slate-600 italic pl-5 text-xs md:text-sm border-b border-dashed border-slate-200 pb-2 mb-2">
+                    我們比較了使用 LLM、傳統筆記或兩者結合，對中學生閱讀理解和記憶留存的影響。
+                </div>
+
+                <div class="guided-box bg-amber-50 border-l-4 border-amber-400 text-amber-900 p-2 rounded text-xs md:text-sm font-semibold mb-2">
+                    💡 導讀重點：研究設計。本句精準指出了隨機對照實驗（RCT）的三大控制組（AI、傳統筆記、混合組）及測量指標。
+                </div>
+
+                <div class="grid grid-cols-12 gap-4 flex-grow overflow-y-auto">
+                    <!-- Text Analytics -->
+                    <div class="col-span-7 bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col gap-3">
+                        <div>
+                            <span class="font-bold text-indigo-900 text-xs flex items-center gap-1.5"><i class="fa-solid fa-book-atlas"></i> 學術單字 (Academic Vocabulary)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-indigo-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-indigo-900">1. Reading Comprehension:</span> 閱讀理解。高階認知過程，指讀者在大腦中將符號解碼、語意重組、內化建構為自身心智特徵的能力。</div>
+                                <div><span class="font-semibold text-indigo-900">2. Retention (n.):</span> 記憶留存率。認知心理學核心術語，指短期工作記憶經過深度加工、編碼後，成功儲存於長期記憶並在未來能被正確提取與檢索的比例。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-emerald-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-feather-pointed"></i> 生僻一般單字 (Uncommon Words)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-emerald-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-emerald-800">1. Secondary school:</span> 中等學校。涵蓋 11 至 18 歲（國高中）教育學制，該群體的認知成長極度依賴自主引導。</div>
+                                <div><span class="font-semibold text-emerald-800">2. Combination (n.):</span> 結合。常用於表示兩個或多個變因相互協同、融合產生的共生效應。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-amber-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-code"></i> 生僻文法 (Uncommon Grammar)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-amber-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-amber-800">1. 指示代名詞 "that" 的替代用法:</span> <span class="italic">"to that of traditional note-taking"</span> 中的 <span class="italic">"that"</span> 為指示代名詞，用以代替前面已出現過的單數名詞 <span class="italic">"the impact"</span>。這種高階代換可避免詞彙重複，是學術寫作高分必備句型。</div>
+                                <div><span class="font-semibold text-amber-800">2. "Compare A to B... on C" 遠距離限定結構:</span> 介系詞片語 <span class="italic">"on secondary school students'..."</span> 在語意上修飾最前方的 <span class="italic">"impact"</span>，但被中間複雜的比較並列項隔開，構成了語意錯位修飾，閱讀時需提煉出 core frame。</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Quiz (5/12) -->
+                    <div class="col-span-5 bg-amber-50/50 border-2 border-amber-200 rounded-xl p-3 flex flex-col justify-between" id="quiz-1">
+                        <div>
+                            <div class="bg-amber-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded inline-block mb-1">IELTS PRACTICE</div>
+                            <span class="text-xs font-bold text-amber-900 block mb-1">
+                                Q1. What was the main focus of the randomized experiment?<br>
+                                <span class="text-[10px] text-amber-800 font-normal">（這項隨機對照實驗的主要焦點是什麼？）</span>
+                            </span>
+                        </div>
+                        <div class="space-y-1">
+                            <button onclick="checkAnswer(1, 'A', false, '這僅是引言中描述的社會現況，並非該隨機對照實驗所要檢測的因變量。再試試看！', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>A. AI adoption rates <span class="text-slate-500 font-normal">（AI 的採用率）</span></span> <i class="fa-solid fa-circle-question text-slate-300"></i>
+                            </button>
+                            <button onclick="checkAnswer(1, 'B', true, '正確！本研究設計了三種不同的教學輔助方法進行嚴格對比，在學術概念上被完美歸類為 Pedagogical comparisons（教學法比較）。', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>B. Pedagogical comparisons <span class="text-slate-500 font-normal">（教學法/教學模式之比較）</span></span> <i class="fa-solid fa-circle-question text-slate-300"></i>
+                            </button>
+                            <button onclick="checkAnswer(1, 'C', false, '認知負荷是定性分析中的心理成因，非量化隨機實驗的核心比對目標。再試試！', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>C. Cognitive load tracking <span class="text-slate-500 font-normal">（認知負荷追蹤）</span></span> <i class="fa-solid fa-circle-question text-slate-300"></i>
+                            </button>
+                            <button onclick="checkAnswer(1, 'D', false, '文本難度分析是前置材料設計，並不是本對照實驗所要比較的核心結論。再想一想！', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>D. Text difficulty analysis <span class="text-slate-500 font-normal">（文本難度分析）</span></span> <i class="fa-solid fa-circle-question text-slate-300"></i>
+                            </button>
+                        </div>
+                        <div class="feedback-box hidden mt-1.5 p-1.5 bg-white rounded border text-[10px]" id="feedback-1"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Sentence 3 -->
+            <div class="slide flex-col justify-between h-full">
+                <h2 class="slide-title text-2xl md:text-3xl font-bold text-academic-deep border-l-[8px] border-academic-deep pl-4 mb-2">逐句解析 (03)</h2>
+                
+                <div class="original-text bg-blue-50 border-l-8 border-academic-deep p-2.5 text-sm md:text-base font-semibold text-academic-deep mb-2 rounded-r-lg">
+                    "We conducted a pre-registered, randomised controlled experiment with within- and between-participant design elements in schools in England."
+                </div>
+                <div class="translation-text text-slate-600 italic pl-5 text-xs md:text-sm border-b border-dashed border-slate-200 pb-2 mb-2">
+                     我們在英格蘭的學校中進行了一項預先註冊、包含受試者內與受試者間設計要素的隨機對照實驗。
+                </div>
+
+                <div class="guided-box bg-amber-50 border-l-4 border-amber-400 text-amber-900 p-2 rounded text-xs md:text-sm font-semibold mb-2">
+                    💡 導讀重點：研究可信度。強調實驗是預先註冊、隨機對照，具備臨床和實證研究的高標準。
+                </div>
+
+                <div class="grid grid-cols-12 gap-4 flex-grow overflow-y-auto">
+                    <!-- Text Analytics -->
+                    <div class="col-span-12 bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col gap-3">
+                        <div>
+                            <span class="font-bold text-indigo-900 text-xs flex items-center gap-1.5"><i class="fa-solid fa-book-atlas"></i> 學術單字 (Academic Vocabulary)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-indigo-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-indigo-900">1. Pre-registered (adj.):</span> 預先註冊的。實證研究方法論核心，指在收集數據前先將研究假設與分析計畫公開註冊，以防止研究者事後操弄數據，提升研究可信度。</div>
+                                <div><span class="font-semibold text-indigo-900">2. Randomised Controlled Experiment:</span> 隨機對照實驗。科學研究黃金標準，透過隨機分派受試者至實驗組與對照組，以確立因果關係。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-emerald-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-feather-pointed"></i> 生僻一般單字 (Uncommon Words)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-emerald-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-emerald-800">1. Conducted (v.):</span> 進行、實施。學術論文中用於代換一般的 "did" 或 "made"，常用來搭配實驗（experiment）、調查（survey）或研究（study）。</div>
+                                <div><span class="font-semibold text-emerald-800">2. Elements (n.):</span> 要素、成分。在此指組成實驗設計的特定方法論結構部件。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-amber-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-code"></i> 生僻文法 (Uncommon Grammar)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-amber-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-amber-800">1. 複合形容詞修飾結構:</span> <span class="italic">"within- and between-participant design elements"</span>。作者利用連字號將複合形容詞並列，共同修飾後面的名詞片語，在心理學與教育學研究文獻中極其高頻。</div>
+                                <div><span class="font-semibold text-amber-800">2. 多重地方介系詞片語後置修飾:</span> <span class="italic">"with... elements in schools in England"</span>。句尾連續使用兩個由 <span class="italic">"in"</span> 引導的地方副詞短語，層層限定實驗發生的範疇（先縮小到學校，再擴大到國家地理）。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Sentence 4 -->
+            <div class="slide flex-col justify-between h-full">
+                <h2 class="slide-title text-2xl md:text-3xl font-bold text-academic-deep border-l-[8px] border-academic-deep pl-4 mb-2">逐句解析 (04)</h2>
+                
+               <div class="original-text bg-blue-50 border-l-8 border-academic-deep p-2.5 text-sm md:text-base font-semibold text-academic-deep mb-2 rounded-r-lg">
+                    "405 students, aged 14–15 years, studied two text passages and completed comprehension and retention tests three days later."
+                </div>
+                <div class="translation-text text-slate-600 italic pl-5 text-xs md:text-sm border-b border-dashed border-slate-200 pb-2 mb-2">
+                      405名14至15歲的學生學習了兩篇課文，並在三天後完成了理解和記憶留存測試。
+                </div>
+
+                <div class="guided-box bg-amber-50 border-l-4 border-amber-400 text-amber-900 p-2 rounded text-xs md:text-sm font-semibold mb-2">
+                    💡 導讀重點：樣本與時間。指出中等教育階段學生在經過3天的「時間衰退」後進行記憶提取，能準確評估長期記憶留存度。
+                </div>
+
+                <div class="grid grid-cols-12 gap-4 flex-grow overflow-y-auto">
+                    <!-- Text Analytics -->
+                    <div class="col-span-12 bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col gap-3">
+                        <div>
+                            <span class="font-bold text-indigo-900 text-xs flex items-center gap-1.5"><i class="fa-solid fa-book-atlas"></i> 學術單字 (Academic Vocabulary)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-indigo-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-indigo-900">1. Text passages:</span> 文本段落/文章。學術測驗或閱讀研究中，專指被挑選出來作為測試材料的獨立書面語料。</div>
+                                <div><span class="font-semibold text-indigo-900">2. Comprehension and Retention:</span> 理解與留存。認知心理學的核心測量配對，前者測量「當下的資訊解碼與吸收」，後者測量「經過時間衰退後的長期記憶固化與提取」。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-emerald-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-feather-pointed"></i> 生僻一般單字 (Uncommon Words)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-emerald-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-emerald-800">1. Aged (adj.):</span> 年齡為...的。過去分詞轉形容詞，用於緊隨在名詞後方進行快速的客觀人口統計學背景限定。</div>
+                                <div><span class="font-semibold text-emerald-800">2. Completed (v.):</span> 完成。比 finished 更具正式感，專用於指代受試者服從指令完成標準化測驗的行為。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-amber-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-code"></i> 生僻文法 (Uncommon Grammar)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-amber-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-amber-800">1. 過去分詞短語作後置插入修飾:</span> <span class="italic">", aged 14–15 years,"</span> 作為插入語修飾主詞 405 students，前後以雙逗號隔開。這種精簡的結構避免了使用關係代名詞子句（who were aged...），讓句子結構更乾淨。</div>
+                                <div><span class="font-semibold text-amber-800">2. 工整的並列謂語結構 (Compound Predicate):</span> 句子由主詞引導了兩個由 <span class="italic">"and"</span> 連接的過去式動詞：<span class="italic">"studied... and completed..."</span>，展現研究流程在時間序上的嚴謹推進。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Sentence 5 -->
+            <div class="slide flex-col justify-between h-full">
+                <h2 class="slide-title text-2xl md:text-3xl font-bold text-academic-deep border-l-[8px] border-academic-deep pl-4 mb-2">逐句解析 (05)</h2>
+                
+                <div class="original-text bg-blue-50 border-l-8 border-academic-deep p-2.5 text-sm md:text-base font-semibold text-academic-deep mb-2 rounded-r-lg">
+                    "Quantitative results demonstrated that both note-taking alone and combined with LLM use had significant positive effects on retention and comprehension compared to using the LLM alone."
+                </div>
+                <div class="translation-text text-slate-600 italic pl-5 text-xs md:text-sm border-b border-dashed border-slate-200 pb-2 mb-2">
+                    定量結果顯示，與單獨使用 LLM 相比，單獨筆記及結合 LLM 使用均對記憶和理解產生了顯著的正向影響。
+                </div>
+
+                <div class="guided-box bg-amber-50 border-l-4 border-amber-400 text-amber-900 p-2 rounded text-xs md:text-sm font-semibold mb-2">
+                    💡 導讀重點：量化實證結論。客觀數據表明「單純使用 AI（LLM alone）」在記憶留存和深度理解方面的成效在實驗中落居最後。
+                </div>
+
+                <div class="grid grid-cols-12 gap-4 flex-grow overflow-y-auto">
+                    <!-- Text Analytics -->
+                    <div class="col-span-7 bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col gap-3">
+                        <div>
+                            <span class="font-bold text-indigo-900 text-xs flex items-center gap-1.5"><i class="fa-solid fa-book-atlas"></i> 學術單字 (Academic Vocabulary)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-indigo-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-indigo-900">1. Quantitative results:</span> 定量結果。基於客觀的數值計算、大樣本隨機分組與實證統計檢定所產出的數據結論。</div>
+                                <div><span class="font-semibold text-indigo-900">2. Significant positive effects:</span> 統計學顯著正向效應。指兩組數據之間的進步差異在統計推論上具備極高可信度（p < 0.05），並非偶然發生。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-emerald-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-feather-pointed"></i> 生僻一般單字 (Uncommon Words)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-emerald-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-emerald-800">1. Demonstrated (v.):</span> 證明、證實。學術寫作黃金動詞，用於代換較為通俗主觀的 "proved/showed"，強調藉由實證數據指出事實。</div>
+                                <div><span class="font-semibold text-emerald-800">2. Alone (adv.):</span> 單獨地、僅。在對照實驗中多用於限定特定的實驗變項排除。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-amber-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-code"></i> 生僻文法 (Uncommon Grammar)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-amber-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-amber-800">1. "both... and..." 引導的主詞並列與省略:</span> 複合主詞結構為 <span class="italic">"both note-taking alone [A] and combined with LLM use [B]"</span>。此處 [B] 段完整結構為 <span class="italic">"note-taking combined with LLM use"</span>，為了句型簡約省略了重複的 note-taking。</div>
+                                <div><span class="font-semibold text-amber-800">2. 分詞結構充當後置修飾語 (Participle Clause):</span> <span class="italic">"combined with..."</span> 為過去分詞短語，在此處直接作後置修飾語限定前置並列名詞。</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Quiz -->
+                    <div class="col-span-5 bg-amber-50/50 border-2 border-amber-200 rounded-xl p-3 flex flex-col justify-between" id="quiz-3">
+                        <div>
+                            <div class="bg-amber-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded inline-block mb-1">IELTS PRACTICE</div>
+                            <span class="text-xs font-bold text-amber-900 block mb-1">
+                                Q2. Which method demonstrated the poorest results in retention and comprehension tests?<br>
+                                <span class="text-[10px] text-amber-800 font-normal">（哪種方法在記憶和理解測試中表現最差？）</span>
+                            </span>
+                        </div>
+                        <div class="space-y-1">
+                            <button onclick="checkAnswer(3, 'A', true, '正確！根據原文對比 compared to using the LLM alone，與其他組相比，單獨使用 LLM 在理解與記憶測試中的表現是最差的。', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>A. Sole LLM utilization <span class="text-slate-500 font-normal">（單獨利用 LLM）</span></span> <i class="fa-solid fa-circle-question text-slate-300"></i>
+                            </button>
+                            <button onclick="checkAnswer(3, 'B', false, '單獨筆記組表現優異，並非最差。再想一想！', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>B. Isolated note-taking <span class="text-slate-500 font-normal">（單獨手寫筆記）</span></span> <i class="fa-solid fa-circle-question text-slate-300"></i>
+                            </button>
+                            <button onclick="checkAnswer(3, 'C', false, '結合組與筆記組同樣表現卓越，顯著高於純 AI 組。再試一次！', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>C. Combined learning activities <span class="text-slate-500 font-normal">（結合兩者的學習活動）</span></span> <i class="fa-solid fa-circle-question text-slate-300"></i>
+                            </button>
+                            <button onclick="checkAnswer(3, 'D', false, '實驗中未單獨包含純傳統閱讀且無筆記的組別。再試一次！', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>D. Traditional reading alone <span class="text-slate-500 font-normal">（僅進行傳統閱讀）</span></span> <i class="fa-solid fa-circle-question text-slate-300"></i>
+                            </button>
+                        </div>
+                        <div class="feedback-box hidden mt-1.5 p-1.5 bg-white rounded border text-[10px]" id="feedback-3"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Sentence 6 -->
+            <div class="slide flex-col justify-between h-full">
+                <h2 class="slide-title text-2xl md:text-3xl font-bold text-academic-deep border-l-[8px] border-academic-deep pl-4 mb-2">逐句解析 (06)</h2>
+                
+                <div class="original-text bg-blue-50 border-l-8 border-academic-deep p-2.5 text-sm md:text-base font-semibold text-academic-deep mb-2 rounded-r-lg">
+                    "Yet, most students preferred using the LLM over note-taking, and perceived it as more helpful."
+                </div>
+                <div class="translation-text text-slate-600 italic pl-5 text-xs md:text-sm border-b border-dashed border-slate-200 pb-2 mb-2">
+                    然而，大多數學生比起抄筆記更偏好使用 LLM，並主觀認為它更有幫助。
+                </div>
+
+                <div class="guided-box bg-amber-50 border-l-4 border-amber-400 text-amber-900 p-2 rounded text-xs md:text-sm font-semibold mb-2">
+                    💡 導讀重點：偏好與效能悖論。本句指出雖然客觀數據顯示手寫筆記更優，但學生受限於舒適度而更偏向科技便利性（主觀感受有用性）。
+                </div>
+
+                <div class="grid grid-cols-12 gap-4 flex-grow overflow-y-auto">
+                    <!-- Text Analytics -->
+                    <div class="col-span-7 bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col gap-3">
+                        <div>
+                            <span class="font-bold text-indigo-900 text-xs flex items-center gap-1.5"><i class="fa-solid fa-book-atlas"></i> 學術單字 (Academic Vocabulary)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-indigo-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-indigo-900">1. Perceived helpfulness:</span> 主觀感知有用性。行為學與 HCI 領域常用詞，指用戶主觀「覺得」某系統有用的程度，與客觀成效通常存在極大的認知偏差。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-emerald-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-feather-pointed"></i> 生僻一般單字 (Uncommon Words)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-emerald-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-emerald-800">1. Perceived (v.):</span> 感知、察覺、認為。強調「基於個人內心框架解讀外界客觀刺激」，常用於探索受試者心理投射的研究。</div>
+                                <div><span class="font-semibold text-emerald-800">2. Preferred (v.):</span> 偏好。在偏好度量、行銷與教育決策中用來指明對抗性選擇。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-amber-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-code"></i> 生僻文法 (Uncommon Grammar)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-amber-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-amber-800">1. "Prefer A over B" 與 "Perceive A as B" 雙重搭配:</span> 前半句使用 <span class="italic">"preferred [using LLM] over [note-taking]"</span>（用 over 表比較，等同 to）；後半句使用 <span class="italic">"perceived [it] as [helpful]"</span>（as 引導形容詞充當受詞補語）。</div>
+                                <div><span class="font-semibold text-amber-800">2. 連接詞 "Yet" 的句首轉折與並列謂語:</span> 句首 <span class="italic">"Yet"</span> 作為強烈轉折副詞，引導後面由 <span class="italic">"preferred"</span> 與 <span class="italic">"perceived"</span> 兩個並列動詞構成的並列謂語結構（Compound Predicate）。</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Quiz -->
+                    <div class="col-span-5 bg-amber-50/50 border-2 border-amber-200 rounded-xl p-3 flex flex-col justify-between" id="quiz-4">
+                        <div>
+                            <div class="bg-amber-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded inline-block mb-1">IELTS PRACTICE</div>
+                            <span class="text-xs font-bold text-amber-900 block mb-1">
+                                Q3. Which word best describes the contradiction between students' attitude and performance?<br>
+                                <span class="text-[10px] text-amber-800 font-normal">（哪個單字最能描述學生態度與實際成效之間的落差？）</span>
+                            </span>
+                        </div>
+                        <div class="space-y-1">
+                            <button onclick="checkAnswer(4, 'A', false, 'Consistent 代表一致，但學生態度與實測數據不一致。再試一次！', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>A. Consistent <span class="text-slate-500 font-normal">（前後一致的）</span></span> <i class="fa-solid fa-circle-question text-slate-300"></i>
+                            </button>
+                            <button onclick="checkAnswer(4, 'B', false, '學生態度傾向明顯熱烈，並非冷漠不關心。再試一次！', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>B. Indifferent <span class="text-slate-500 font-normal">（漠不關心的）</span></span> <i class="fa-solid fa-circle-question text-slate-300"></i>
+                            </button>
+                            <button onclick="checkAnswer(4, 'C', true, '正確！客觀成效佳的手寫筆記不討喜，主觀覺得有幫助的 AI 成效反不佳，此為 Contradictory（矛盾、相反）的關係。', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>C. Contradictory <span class="text-slate-500 font-normal">（矛盾的、相反的）</span></span> <i class="fa-solid fa-circle-check text-slate-300"></i>
+                            </button>
+                            <button onclick="checkAnswer(4, 'D', false, 'Skeptical 指懷疑的，然而學生主觀極度信任 AI 的功能。再試一次！', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>D. Skeptical <span class="text-slate-500 font-normal">（持懷疑態度的）</span></span> <i class="fa-solid fa-circle-question text-slate-300"></i>
+                            </button>
+                        </div>
+                        <div class="feedback-box hidden mt-1.5 p-1.5 bg-white rounded border text-[10px]" id="feedback-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 9: Sentence 7 -->
+            <div class="slide flex-col justify-between h-full">
+                <h2 class="slide-title text-2xl md:text-3xl font-bold text-academic-deep border-l-[8px] border-academic-deep pl-4 mb-2">逐句解析 (07)</h2>
+                
+                <div class="original-text bg-blue-50 border-l-8 border-academic-deep p-2.5 text-sm md:text-base font-semibold text-academic-deep mb-2 rounded-r-lg">
+                    "Qualitative results revealed that many students valued the LLM for making complex material more accessible and reducing cognitive load, while they appreciated note-taking for promoting deeper engagement and aiding memory."
+                </div>
+                <div class="translation-text text-slate-600 italic pl-5 text-xs md:text-sm border-b border-dashed border-slate-200 pb-2 mb-2">
+                    定性結果顯示，許多學生看重 LLM 能讓複雜材料更容易理解並降低認知負荷，同時他們讚賞筆記能促進更深層的學習投入並輔助記憶。
+                </div>
+
+                <div class="guided-box bg-amber-50 border-l-4 border-amber-400 text-amber-900 p-2 rounded text-xs md:text-sm font-semibold mb-2">
+                    💡 導讀重點：認知心理學機制的對稱。AI 主要用以降低工作記憶的負荷，而手寫筆記負責在深度參與中建立長期記憶固化。
+                </div>
+
+                <div class="grid grid-cols-12 gap-4 flex-grow overflow-y-auto">
+                    <!-- Text Analytics -->
+                    <div class="col-span-7 bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col gap-3">
+                        <div>
+                            <span class="font-bold text-indigo-900 text-xs flex items-center gap-1.5"><i class="fa-solid fa-book-atlas"></i> 學術單字 (Academic Vocabulary)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-indigo-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-indigo-900">1. Cognitive load:</span> 認知負荷。指人在處理學習、推理等智力任務時，其工作記憶（Working Memory）在同一時間所需承受並占用的總能耗、資訊處理壓力。</div>
+                                <div><span class="font-semibold text-indigo-900">2. Deeper engagement:</span> 深層參與。指學習者不僅停留在文字表面掃描，而是透過重組、書寫積極與大腦舊知識網絡形成連結的高階加工心理特徵。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-emerald-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-feather-pointed"></i> 生僻一般單字 (Uncommon Words)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-emerald-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-emerald-800">1. Accessible:</span> 易於解讀的、平易近人的。常用於表示高難度學術概念在經過轉化簡約後，能被低程度者輕易解讀。</div>
+                                <div><span class="font-semibold text-emerald-800">2. Aiding:</span> 輔助。作動名詞用以修飾某種傳統實踐作為記憶鏈催化劑的角色（同義詞：promoting）。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-amber-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-code"></i> 生僻文法 (Uncommon Grammar)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-amber-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-amber-800">1. 連接詞 "while" 的學術平行對比:</span> 句中 <span class="italic">"while"</span> 為表示「對抗對比」的從屬連接詞，前後引導了高度工整的句型對比，指出 AI 與手寫筆記的不同功能屬性。</div>
+                                <div><span class="font-semibold text-amber-800">2. "value [A] for [Ving]" 原因狀語結構:</span> 介系詞 <span class="italic">"for"</span> 在此引導原因動名詞，解釋了許多學生看重（valued）與欣賞（appreciated）特定工具的內部原因。</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Quiz -->
+                   <div class="col-span-5 bg-amber-50/50 border-2 border-amber-200 rounded-xl p-3 flex flex-col justify-between" id="quiz-5">
+                        <div>
+                            <div class="bg-amber-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded inline-block mb-1">IELTS PRACTICE</div>
+                            <span class="text-xs font-bold text-amber-900 block mb-1">
+                                Q4. According to the qualitative results, what is the primary practical advantage of an LLM?<br>
+                                <span class="text-[10px] text-amber-800 font-normal">（根據定性分析結果，LLM 最主要的實用優勢是什麼？）</span>
+                            </span>
+                        </div>
+                        <div class="space-y-1">
+                            <button onclick="checkAnswer(5, 'A', false, '這是傳統筆記的特色優勢（Aiding memory），而非 LLM 的優勢。', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>A. Memory consolidation <span class="text-slate-500 font-normal">（記憶固化）</span></span> <i class="fa-solid fa-circle-question text-slate-300"></i>
+                            </button>
+                            <button onclick="checkAnswer(5, 'B', true, '答對了！原文指出 LLM 能夠 making complex material more accessible（使複雜材料更易懂），這對應 Material simplification（材料簡化）。', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>B. Material simplification <span class="text-slate-500 font-normal">（文本材料簡化）</span></span> <i class="fa-solid fa-circle-question text-slate-300"></i>
+                            </button>
+                            <button onclick="checkAnswer(5, 'C', false, '促進深層參與（Deeper engagement）是手寫筆記組的代表性優勢。再試一次！', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>C. Deeper engagement <span class="text-slate-500 font-normal">（更深層的投入參與）</span></span> <i class="fa-solid fa-circle-question text-slate-300"></i>
+                            </button>
+                            <button onclick="checkAnswer(5, 'D', false, '雖然涉及 Prompt 行為，但這是一項技能，而非軟體本身直接帶來的主要簡化優勢。再試一次！', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>D. Prompt optimization <span class="text-slate-500 font-normal">（提示詞最佳化）</span></span> <i class="fa-solid fa-circle-question text-slate-300"></i>
+                            </button>
+                        </div>
+                        <div class="feedback-box hidden mt-1.5 p-1.5 bg-white rounded border text-[10px]" id="feedback-5"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 10: Sentence 8 -->
+            <div class="slide flex-col justify-between h-full">
+                <h2 class="slide-title text-2xl md:text-3xl font-bold text-academic-deep border-l-[8px] border-academic-deep pl-4 mb-2">逐句解析 (08)</h2>
+                
+                <div class="original-text bg-blue-50 border-l-8 border-academic-deep p-2.5 text-sm md:text-base font-semibold text-academic-deep mb-2 rounded-r-lg">
+                    "Additionally, we identified 'archetypes' of prompting behaviour, offering insights into the different ways students interacted with the LLM."
+                </div>
+                <div class="translation-text text-slate-600 italic pl-5 text-xs md:text-sm border-b border-dashed border-slate-200 pb-2 mb-2">
+                    此外，我們識別了提示行為的「原型」，為學生與 LLM 互動的不同方式提供了深刻見解。
+                </div>
+
+                <div class="guided-box bg-amber-50 border-l-4 border-amber-400 text-amber-900 p-2 rounded text-xs md:text-sm font-semibold mb-2">
+                    💡 導讀重點：學生與 AI 的互動行為模式。證明在使用 AI 時，學生的 Prompt 提問方式與行為深度存在顯著的類型差異（分群研究）。
+                </div>
+
+                <div class="grid grid-cols-12 gap-4 flex-grow overflow-y-auto">
+                    <!-- Text Analytics -->
+                    <div class="col-span-12 bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col gap-3">
+                        <div>
+                            <span class="font-bold text-indigo-900 text-xs flex items-center gap-1.5"><i class="fa-solid fa-book-atlas"></i> 學術單字 (Academic Vocabulary)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-indigo-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-indigo-900">1. Archetypes (n.):</span> 原型、典型模式。定性研究或用戶行為分析中的高階詞彙，指透過數據分類（聚類）提煉出的、具代表性的行為特徵模型。</div>
+                                <div><span class="font-semibold text-indigo-900">2. Prompting behaviour:</span> 提示詞行為。人機互動（HCI）領域新興術語，專指使用者為了操縱生成式 AI 模型而設計輸入指令的策略與具體操作行為。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-emerald-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-feather-pointed"></i> 生僻一般單字 (Uncommon Words)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-emerald-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-emerald-800">1. Insights (n.):</span> 深刻見解、洞察。學術論文結尾或討論部分的高頻詞，強調研究結果不僅是表象數據，而是看透事物本質的知識建構。</div>
+                                <div><span class="font-semibold text-emerald-800">2. Interacted (v.):</span> 互動、交尾影響。指兩個主體（此處為學生與 AI）之間產生雙向的資訊刺激與反饋行為。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-amber-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-code"></i> 生僻文法 (Uncommon Grammar)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-amber-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-amber-800">1. 現在分詞短語作隨伴動作與結果狀語 (Participle Clause):</span> <span class="italic">", offering insights..."</span>。這裡的現在分詞短語修飾整個前半句的主句行為，用來補充說明「識別出原型」所帶來的直接研究貢獻與學術價值。</div>
+                                <div><span class="font-semibold text-amber-800">2. 關係副詞省略的賓語從句/名詞子句:</span> <span class="italic">"the different ways [that/in which] students interacted..."</span>。在名詞 ways 後方直接接主詞動詞，省略了關係代名詞或副詞，在美式學術英語中相當普遍，使語意連貫度更高。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 11: Sentence 9 -->
+            <div class="slide flex-col justify-between h-full">
+                <h2 class="slide-title text-2xl md:text-3xl font-bold text-academic-deep border-l-[8px] border-academic-deep pl-4 mb-2">逐句解析 (09)</h2>
+                
+                <div class="original-text bg-blue-50 border-l-8 border-academic-deep p-2.5 text-sm md:text-base font-semibold text-academic-deep mb-2 rounded-r-lg">
+                    "Overall, our findings suggest that, while note-taking promotes cognitive engagement and long-term comprehension and retention, LLMs may facilitate initial understanding and student interest."
+                </div>
+                <div class="translation-text text-slate-600 italic pl-5 text-xs md:text-sm border-b border-dashed border-slate-200 pb-2 mb-2">
+                    總體而言，我們的研究結果顯示：雖然筆記能促進認知投入以及長期的理解與記憶留存，但 LLM 確實可能有利於初步的理解和學生興趣。
+                </div>
+
+                <div class="guided-box bg-amber-50 border-l-4 border-amber-400 text-amber-900 p-2 rounded text-xs md:text-sm font-semibold mb-2">
+                    💡 導讀重點：研究最終結論。指出科技與傳統學習並非你死我活的對立，而是能在學習進程中扮演「起點與終點」的不同任務。
+                </div>
+
+                <div class="grid grid-cols-12 gap-5 flex-grow overflow-y-auto">
+                    <!-- Text Analytics -->
+                    <div class="col-span-12 bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col gap-3">
+                        <div>
+                            <span class="font-bold text-indigo-900 text-xs flex items-center gap-1.5"><i class="fa-solid fa-book-atlas"></i> 學術單字 (Academic Vocabulary)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-indigo-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-indigo-900">1. Cognitive engagement:</span> 認知投入。學習者主觀分配大腦注意力資源以吸收、組織與處理新資訊的深度心理活動。</div>
+                                <div><span class="font-semibold text-indigo-900">2. Long-term comprehension:</span> 長期理解。指資訊在腦中經過編碼、分類鞏固後，可作跨情境遷移使用的長期理解表現。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-emerald-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-feather-pointed"></i> 生僻一般單字 (Uncommon Words)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-emerald-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-emerald-800">1. Facilitate (v.):</span> 促進、便利。高頻學術動詞，表示「使某一進程或任務變得更容易實現或推進」。</div>
+                                <div><span class="font-semibold text-emerald-800">2. Initial (adj.):</span> 初步的、起初的。常用於描述認知學習的起點階段（同義詞：preliminary）。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-amber-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-code"></i> 生僻文法 (Uncommon Grammar)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-amber-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-amber-800">1. "While" 從屬子句的對比譲步:</span> 由 <span class="italic">"while note-taking promotes..."</span> 引導的讓步狀語子句，表示對傳統優勢的承認，隨後引出主句對 LLM 特有優勢（促進興趣與初步掌握）的提煉，邏輯層次極佳。</div>
+                                <div><span class="font-semibold text-amber-800">2. 助動詞 "may" 的學術避險修辭 (Hedging):</span> 使用 <span class="italic">"LLMs may facilitate"</span>，而非斷言的 "LLMs facilitate"，這是高水準學術論文的核心修辭特徵，用以表達語意上的謙遜與客觀保留。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 12: Sentence 10 -->
+            <div class="slide flex-col justify-between h-full">
+                <h2 class="slide-title text-2xl md:text-3xl font-bold text-academic-deep border-l-[8px] border-academic-deep pl-4 mb-2">逐句解析 (10)</h2>
+                
+                <div class="original-text bg-blue-50 border-l-8 border-academic-deep p-2.5 text-sm md:text-base font-semibold text-academic-deep mb-2 rounded-r-lg">
+                    "The study reveals the continued importance of traditional learning activities, the benefits of combining LLM use with traditional learning over using LLMs alone, and the AI skills that students need to maximise those benefits."
+                </div>
+                <div class="translation-text text-slate-600 italic pl-5 text-xs md:text-sm border-b border-dashed border-slate-200 pb-2 mb-2">
+                    本研究揭示了傳統學習活動的持續重要性、結合使用之效益，以及學生需具備 AI 技能以最大化效益的需求。
+                </div>
+
+                <div class="guided-box bg-amber-50 border-l-4 border-amber-400 text-amber-900 p-2 rounded text-xs md:text-sm font-semibold mb-2">
+                    💡 導讀重點：核心政策建議。說明在引進 AI 教育時，必須落實混合教學，且必須輔以對應的 AI 能力培訓（素養教育）。
+                </div>
+
+                <div class="grid grid-cols-12 gap-4 flex-grow overflow-y-auto">
+                    <!-- Text Analytics -->
+                    <div class="col-span-7 bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col gap-3">
+                        <div>
+                            <span class="font-bold text-indigo-900 text-xs flex items-center gap-1.5"><i class="fa-solid fa-book-atlas"></i> 學術單字 (Academic Vocabulary)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-indigo-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-indigo-900">1. Continued importance:</span> 持續的重要性。用於文獻討論或結論，強調在新技術（AI）衝擊下，傳統機制依然具備不可替代的實質價值。</div>
+                                <div><span class="font-semibold text-indigo-900">2. Maximise benefits:</span> 效益最大化。政策研究與教育應用中的指標性術語，指透過策略干預，將新工具能帶來的潛在好處激發至極致。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-emerald-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-feather-pointed"></i> 生僻一般單字 (Uncommon Words)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-emerald-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-emerald-800">1. Reveals (v.):</span> 揭示、展現。黃金學術動詞，用於引導最終結論，帶有「揭開先前未知之謎、展現客觀事實」的語氣分量。</div>
+                                <div><span class="font-semibold text-emerald-800">2. Skills (n.):</span> 技能、素養。在此處非指單純的技術操作，而是包含提示詞設計、批判性評估等高階「AI 素養」。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-amber-800 text-xs flex items-center gap-1.5"><i class="fa-solid fa-code"></i> 生僻文法 (Uncommon Grammar)</span>
+                            <div class="text-[11px] text-slate-700 pl-3 border-l-2 border-amber-200 mt-1 space-y-1">
+                                <div><span class="font-semibold text-amber-800">1. 高階的三重平行受詞結構 (A, B, and C):</span> 主要動詞 <span class="italic">"reveals"</span> 後方，直接由逗號和連連詞並列引導了三個極為複雜的名詞片語作為受詞：<span class="italic">"the continued importance of... [A], the benefits of... [B], and the AI skills... [C]"</span>。結構極為平衡且富有節奏感。</div>
+                                <div><span class="font-semibold text-amber-800">2. 定語從句/關係代名詞子句限定結構:</span> <span class="italic">"that students need to maximise those benefits"</span> 作為形容詞子句，從後方精準限定修飾先行詞 "AI skills"，並採用不定詞 <span class="italic">"to maximise"</span> 充當目的狀語。</div>
+                            </div>
+                        </div>
+                    </div>
+
+                   <!-- Interactive Quiz -->
+                    <div class="col-span-5 bg-amber-50/50 border-2 border-amber-200 rounded-xl p-3 flex flex-col justify-between" id="quiz-6">
+                        <div>
+                            <div class="bg-amber-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded inline-block mb-1">IELTS PRACTICE</div>
+                            <span class="text-xs font-bold text-amber-900 block mb-1">
+                                Q5. What does the author suggest is essential for students to fully profit from AI in classrooms?<br>
+                                <span class="text-[10px] text-amber-800 font-normal">（作者認為學生若要完全從課堂 AI 中獲益，什麼是必不可少的？）</span>
+                            </span>
+                        </div>
+                        <div class="space-y-1">
+                            <button onclick="checkAnswer(6, 'A', false, '限制或排除 AI 並非研究主旨，作者倡導的是混合式教學。再試一次！', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>A. Technological exclusion <span class="text-slate-500 font-normal">（技術排除/禁用）</span></span> <i class="fa-solid fa-circle-question text-slate-300"></i>
+                            </button>
+                            <button onclick="checkAnswer(6, 'B', false, '文末提到在引進 AI 科技時應高度保留傳統筆記的重要性，而非一味淘汰。再想一想！', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>B. Traditional elimination <span class="text-slate-500 font-normal">（傳統學習法淘汰）</span></span> <i class="fa-solid fa-circle-question text-slate-300"></i>
+                            </button>
+                            <button onclick="checkAnswer(6, 'C', false, '加強管控並不能直接使學生獲益最大化。再試一次！', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>C. Stricter classroom regulations <span class="text-slate-500 font-normal">（更嚴格的課堂規範）</span></span> <i class="fa-solid fa-circle-question text-slate-300"></i>
+                            </button>
+                            <button onclick="checkAnswer(6, 'D', true, '完全正確！原文末段指出，為了在課堂結合中使利益最大化，必須著墨於學生的 AI skills 培訓，這對應選項中的 Competency training（提問素養與能力培訓）。', this)" class="w-full text-left bg-white border border-slate-200 hover:bg-slate-50 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center">
+                                <span>D. Competency training <span class="text-slate-500 font-normal">（素養/能力培訓）</span></span> <i class="fa-solid fa-circle-question text-slate-300"></i>
+                            </button>
+                        </div>
+                        <div class="feedback-box hidden mt-1.5 p-1.5 bg-white rounded border text-[10px]" id="feedback-6"></div>
+                    </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Bottom Controls Footer -->
+    <footer class="bg-white border-t border-slate-200 px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm z-10">
+        <!-- Progress Bar (Mobile) -->
+        <div class="w-full bg-slate-100 rounded-full h-1.5 md:hidden">
+            <div class="bg-amber-600 h-1.5 rounded-full transition-all duration-300" id="progress-mobile" style="width: 12.5%"></div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <button onclick="prevSlide()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-lg font-medium text-sm transition flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left"></i> 上一頁
+            </button>
+            <button onclick="nextSlide()" class="bg-academic-deep hover:bg-blue-900 text-white px-5 py-2 rounded-lg font-medium text-sm transition flex items-center gap-2 shadow-md">
+                下一頁 <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+
+        <!-- Slide Number and Progress Bar (Desktop) -->
+        <div class="hidden md:flex items-center gap-4 w-1/3">
+            <div class="w-full bg-slate-100 rounded-full h-2">
+                <div class="bg-amber-600 h-2 rounded-full transition-all duration-300" id="progress-desktop" style="width: 12.5%"></div>
+            </div>
+            <span class="text-slate-500 text-sm font-semibold whitespace-nowrap" id="slide-number">Slide 1 of 8</span>
+        </div>
+
+        <div class="text-slate-400 text-xs">
+            © 2026 Academic Reader App
+        </div>
+    </footer>
+
+    <!-- Interactive Navigation Logic -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const slideNumber = document.getElementById('slide-number');
+        const progressDesktop = document.getElementById('progress-desktop');
+        const progressMobile = document.getElementById('progress-mobile');
+
+        function updateSlideVisibility() {
+            slides.forEach((slide, idx) => {
+                if (idx === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            // Update Progress Indicators
+            const totalSlides = slides.length;
+            const progressPercent = ((currentSlide + 1) / totalSlides) * 100;
+            slideNumber.textContent = `Slide ${currentSlide + 1} of ${totalSlides}`;
+            progressDesktop.style.width = `${progressPercent}%`;
+            progressMobile.style.width = `${progressPercent}%`;
+        }
+
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                updateSlideVisibility();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlideVisibility();
+            }
+        }
+
+        // Keyboard navigation (← and →)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        // Toggle Fullscreen mode
+        function toggleFullScreen() {
+            const deck = document.getElementById('slide-deck');
+            const icon = document.getElementById('fs-icon');
+            if (!document.fullscreenElement) {
+                deck.requestFullscreen().catch(err => {
+                    console.log(`Error attempting to enable full-screen mode: ${err.message}`);
+                });
+                icon.classList.replace('fa-expand', 'fa-compress');
+            } else {
+                document.exitFullscreen();
+                icon.classList.replace('fa-compress', 'fa-expand');
+            }
+        }
+
+        // Quiz Checker Engine (With Retry Support)
+        function checkAnswer(quizNum, choice, isCorrect, explanation, buttonElement) {
+            const quizCard = document.getElementById(`quiz-${quizNum}`);
+            const feedback = document.getElementById(`feedback-${quizNum}`);
+            
+            if (isCorrect) {
+                // LOCK everything if correctly answered
+                const buttons = quizCard.querySelectorAll('button');
+                buttons.forEach(btn => {
+                    btn.disabled = true;
+                    if (btn === buttonElement) {
+                        btn.className = "w-full text-left bg-emerald-500 text-white text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center border border-emerald-600";
+                        btn.querySelector('i').className = "fa-solid fa-circle-check text-white";
+                    } else {
+                        btn.className = "w-full text-left bg-slate-50 text-slate-400 text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center border border-slate-100 cursor-not-allowed";
+                        btn.querySelector('i').className = "fa-solid fa-lock text-slate-300";
+                    }
+                });
+
+                // Display Correct Feedback
+                feedback.classList.remove('hidden');
+                feedback.className = "feedback-box mt-1.5 p-2 bg-emerald-50 text-emerald-800 rounded border border-emerald-200 text-[10px] font-medium leading-relaxed";
+                feedback.innerHTML = `🎉 <b>完全正確！答案就是 (${choice})！</b><br>${explanation}`;
+            } else {
+                // Only disable the wrong button clicked, allowing other choices to remain active
+                buttonElement.disabled = true;
+                buttonElement.className = "w-full text-left bg-rose-500 text-white text-[10px] p-1.5 rounded-lg transition font-medium flex justify-between items-center border border-rose-600 cursor-not-allowed";
+                buttonElement.querySelector('i').className = "fa-solid fa-circle-xmark text-white";
+
+                // Display Try-Again Hint
+                feedback.classList.remove('hidden');
+                feedback.className = "feedback-box mt-1.5 p-2 bg-rose-50 text-rose-800 rounded border border-rose-200 text-[10px] font-medium leading-relaxed";
+                feedback.innerHTML = `❌ <b>不對喔！選項 (${choice}) 不是正確答案。</b><br>${explanation}<br><span class="font-bold text-rose-900">💡 提示：您可以繼續點擊其他剩餘的選項試試看！</span>`;
+            }
+        }
+    </script>
+</body>
+</html>
